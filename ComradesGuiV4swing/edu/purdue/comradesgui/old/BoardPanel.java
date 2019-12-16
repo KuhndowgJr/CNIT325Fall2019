@@ -296,7 +296,7 @@ public class BoardPanel extends JPanel implements MouseListener {
 		MoveTree MT = POS.MOVE_TREE;
 		if (MT.NOW == MT.ROOT)
 			return;
-//		if (true) {
+		if (true) {
 		CF.HaltInstances();
 		POS.DisAttendMove32(MT.NOW.mv.move);
 		/*
@@ -308,8 +308,8 @@ public class BoardPanel extends JPanel implements MouseListener {
 		repaint();
 		BoardPositionChanged();
 		CF.EquipInstances();
-//		} else
-//			MT.JumpToNode(MT.NOW.MainLineParent); // value for Instances
+		} else
+			MT.JumpToNode(MT.NOW.MainLineParent); // value for Instances
 	}
 
 	public void AbruptForward() {
