@@ -253,7 +253,29 @@ public class BoardPanel extends JPanel implements MouseListener {
 	public void AttendMoveNew(TypeMove tm, boolean ReDraw) {
 		POS.MakeMove32(tm.move, tm.fancy);
 		POS.MakeNormal();
+		
+String currentFEN = POS.GetFENwithoutMoves();
+        
+    	int index = threeRepeatList.indexOf(currentFEN);
+
+        if(index >= 0)
+        {
+        	int count = threeRepeatCount.get(index) + 1;
+        	threeRepeatCount.set(index,  count);
+        	if (count >= 3)
+        	{
+        		threeRepeats = true;
+        	}
+        }
+        else
+        {
+        	threeRepeatList.add(currentFEN);
+        	threeRepeatCount.add(1);
+        }
+    	CF.legalMoves = POS.COUNT_OF_LEGAL_MOVES;
 		if (ReDraw)
+			
+			
 			CF.FEN_AREA.setText(POS.GetFEN());
 	}
 
