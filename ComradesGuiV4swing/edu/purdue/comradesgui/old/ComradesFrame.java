@@ -410,9 +410,8 @@ public class ComradesFrame implements MouseListener, ActionListener, FocusListen
 
 	public void EquipInstances() {
 		for (int i = 0; i < instances; i++)
-			if (INSTANCES_ON_COPY[i])
-				INSTANCES[i].SendGo();
-		//INSTANCES[i].SendGoInfinite ();
+		    if (INSTANCES_ON_COPY[i])
+			INSTANCES[i].SendGoInfinite ();
 	}
 
 	public void NewGameInstances() {
