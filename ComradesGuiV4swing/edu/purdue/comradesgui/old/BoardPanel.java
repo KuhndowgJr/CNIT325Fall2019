@@ -227,7 +227,9 @@ public class BoardPanel extends JPanel implements MouseListener {
 		CF.isCheck = (POS.move_list_annotated[w].indexOf("+") != -1);
 		POS.MakeMove(w);
 		POS.MakeNormal();
-
+		POS.MOVES_50_MOVE_RULE++;
+		CF.legalMoves = POS.COUNT_OF_LEGAL_MOVES;
+		
 		String currentFEN = POS.GetFENwithoutMoves();
 
 		int index = threeRepeatList.indexOf(currentFEN);
@@ -244,7 +246,6 @@ public class BoardPanel extends JPanel implements MouseListener {
 			threeRepeatCount.add(1);
 		}
 
-		CF.legalMoves = POS.COUNT_OF_LEGAL_MOVES;
 
 		if (ReDraw)
 			CF.FEN_AREA.setText(POS.GetFEN());
@@ -304,7 +305,7 @@ String currentFEN = POS.GetFENwithoutMoves();
 
 				if (!CF.checkGameOver()) {
 					CF.EquipInstances();
-					if (CF.gameMode == 1) {
+					
 						CF.INSTANCES[0].SendGo();
 					}
 				}
@@ -312,7 +313,7 @@ String currentFEN = POS.GetFENwithoutMoves();
 				return;
 			}
 		}
-	}
+	
 
 	public void AbruptBack() {
 		MoveTree MT = POS.MOVE_TREE;

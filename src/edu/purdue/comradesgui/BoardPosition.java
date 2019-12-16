@@ -1,4 +1,4 @@
-package edu.purdue.comradesgui.old;
+package edu.purdue.comradesgui;
 
 import java.util.*;
 
@@ -21,8 +21,7 @@ public class BoardPosition
     int LAST_FROM_y = 0;
     int LAST_TO_x = 0;
     int LAST_TO_y = 0;
-    int MOVES_50_MOVE_RULE = 0;
-    
+
     public BoardPosition (BoardPosition BP) // copy
     {
 	AT = new int[10][10];
