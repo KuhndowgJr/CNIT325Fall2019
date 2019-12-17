@@ -1,3 +1,4 @@
+
 package edu.purdue.comradesgui;
 
 import javafx.collections.FXCollections;

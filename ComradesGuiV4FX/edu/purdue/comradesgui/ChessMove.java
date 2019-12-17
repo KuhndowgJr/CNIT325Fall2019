@@ -27,6 +27,7 @@ public class ChessMove {
 	 */
 	public ChessMove(String rawMove, ChessGame chessGame) {
 
+	
 		this.chessGame = chessGame;
 		this.inputMoveString = rawMove;
 
