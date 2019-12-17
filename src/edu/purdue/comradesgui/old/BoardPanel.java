@@ -227,9 +227,7 @@ public class BoardPanel extends JPanel implements MouseListener {
 		CF.isCheck = (POS.move_list_annotated[w].indexOf("+") != -1);
 		POS.MakeMove(w);
 		POS.MakeNormal();
-		POS.MOVES_50_MOVE_RULE++;
-		CF.legalMoves = POS.COUNT_OF_LEGAL_MOVES;
-		
+
 		String currentFEN = POS.GetFENwithoutMoves();
 
 		int index = threeRepeatList.indexOf(currentFEN);
@@ -246,6 +244,7 @@ public class BoardPanel extends JPanel implements MouseListener {
 			threeRepeatCount.add(1);
 		}
 
+		CF.legalMoves = POS.COUNT_OF_LEGAL_MOVES;
 
 		if (ReDraw)
 			CF.FEN_AREA.setText(POS.GetFEN());
@@ -254,29 +253,7 @@ public class BoardPanel extends JPanel implements MouseListener {
 	public void AttendMoveNew(TypeMove tm, boolean ReDraw) {
 		POS.MakeMove32(tm.move, tm.fancy);
 		POS.MakeNormal();
-		
-String currentFEN = POS.GetFENwithoutMoves();
-        
-    	int index = threeRepeatList.indexOf(currentFEN);
-
-        if(index >= 0)
-        {
-        	int count = threeRepeatCount.get(index) + 1;
-        	threeRepeatCount.set(index,  count);
-        	if (count >= 3)
-        	{
-        		threeRepeats = true;
-        	}
-        }
-        else
-        {
-        	threeRepeatList.add(currentFEN);
-        	threeRepeatCount.add(1);
-        }
-    	CF.legalMoves = POS.COUNT_OF_LEGAL_MOVES;
 		if (ReDraw)
-			
-			
 			CF.FEN_AREA.setText(POS.GetFEN());
 	}
 
@@ -305,7 +282,7 @@ String currentFEN = POS.GetFENwithoutMoves();
 
 				if (!CF.checkGameOver()) {
 					CF.EquipInstances();
-					
+					if (CF.gameMode == 1) {
 						CF.INSTANCES[0].SendGo();
 					}
 				}
@@ -313,13 +290,13 @@ String currentFEN = POS.GetFENwithoutMoves();
 				return;
 			}
 		}
-	
+	}
 
 	public void AbruptBack() {
 		MoveTree MT = POS.MOVE_TREE;
 		if (MT.NOW == MT.ROOT)
 			return;
-		if (true) {
+//		if (true) {
 		CF.HaltInstances();
 		POS.DisAttendMove32(MT.NOW.mv.move);
 		/*
@@ -331,8 +308,8 @@ String currentFEN = POS.GetFENwithoutMoves();
 		repaint();
 		BoardPositionChanged();
 		CF.EquipInstances();
-		} else
-			MT.JumpToNode(MT.NOW.MainLineParent); // value for Instances
+//		} else
+//			MT.JumpToNode(MT.NOW.MainLineParent); // value for Instances
 	}
 
 	public void AbruptForward() {
