@@ -35,6 +35,7 @@ public class ChessGame {
 	private BooleanProperty gameStarted;
 
 	private BooleanProperty useTimers;
+	private BooleanProperty useInfiniteAnalysis;
 
 	private BooleanProperty useTimerIncrement;
 	private BooleanProperty useTimerBuffer;
@@ -49,7 +50,7 @@ public class ChessGame {
 	public ChessGame() {
 
 		chessCells = new ChessCell[8][8];
-
+		
 		whiteTimer = new ChessPlayerTimer();
 		blackTimer = new ChessPlayerTimer();
 
@@ -72,6 +73,7 @@ public class ChessGame {
 		blackTurn = new SimpleBooleanProperty();
 
 		useTimers = new SimpleBooleanProperty();
+		useInfiniteAnalysis = new SimpleBooleanProperty();
 
 		useTimerIncrement = new SimpleBooleanProperty();
 		useTimerBuffer = new SimpleBooleanProperty();
@@ -164,9 +166,17 @@ public class ChessGame {
 	public void setUseTimers(boolean useTimers) {
 		this.useTimers.setValue(useTimers);
 	}
+	
+	public void setUseInfiniteAnalysis(boolean input) {
+		this.useInfiniteAnalysis.setValue(input);
+	}
 
 	public BooleanProperty getUseTimers() {
 		return useTimers;
+	}
+	
+	public BooleanProperty getUseInfiniteAnalysis() {
+		return useInfiniteAnalysis;
 	}
 
 	public boolean isUsingTimers() {
@@ -805,7 +815,7 @@ public class ChessGame {
 
 				if(move.isMoveFound()) {
 					if(Character.toLowerCase(move.getMovingPiece().getPieceChar()) != 'p')
-						buildMoves += move.getMovingPiece().getPieceChar();
+						buildMoves += Character.toUpperCase(move.getMovingPiece().getPieceChar());
 
 					if(move.isCaptureMove())
 						buildMoves += "x";

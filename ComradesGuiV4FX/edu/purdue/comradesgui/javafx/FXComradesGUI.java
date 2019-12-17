@@ -36,6 +36,7 @@ public class FXComradesGUI extends Application {
 
 	private ComboBox<ChessPlayer> whitePlayerCombo;
 	private ComboBox<ChessPlayer> blackPlayerCombo;
+	private CheckBox useInfiniteTimer;
 	private CheckBox useTimerCheckBox;
 	private CheckBox useTimerDelay;
 	private CheckBox useDelayAsBuffer;
@@ -220,6 +221,7 @@ public class FXComradesGUI extends Application {
 
 		whitePlayerCombo = new ComboBox<>();
 		blackPlayerCombo = new ComboBox<>();
+		useInfiniteTimer = new CheckBox("Infinite Analysis");
 		useTimerCheckBox = new CheckBox("Use Timers");
 		useTimerDelay = new CheckBox("Enable Delay");
 		useDelayAsBuffer = new CheckBox("Use as Buffer?");
@@ -416,6 +418,43 @@ public class FXComradesGUI extends Application {
 			else
 				updateButtons();
 		});
+		
+		useInfiniteTimer.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+			
+			
+			ChessPlayer tempBlackPlayer = comradesMain.getCurrentGame().getBlackPlayer();
+			if(tempBlackPlayer != null) {
+				//Is the player a chess engine?
+				if(tempBlackPlayer instanceof ChessEngine) {
+					
+					//Tell the computer the player is a chess engine, store that in a variable called whiteEngine
+					ChessEngine blackEngine = (ChessEngine) tempBlackPlayer;
+				
+					//Tell the chess engine to enable/disable infinite analysis
+					blackEngine.getGoCommandBuilder().setInfinite(newValue);
+				}	
+			
+			}
+			
+			
+			//Get the current white player from the game 
+			ChessPlayer tempWhitePlayer = comradesMain.getCurrentGame().getWhitePlayer();
+			
+			//Is there a valid player?
+			if(tempWhitePlayer != null) {
+		
+				//Is the player a chess engine?
+				if(tempWhitePlayer instanceof ChessEngine) {
+					
+					//Tell the computer the player is a chess engine, store that in a variable called whiteEngine
+					ChessEngine whiteEngine = (ChessEngine) tempWhitePlayer;
+				
+					//Tell the chess engine to enable/disable infinite analysis
+					whiteEngine.getGoCommandBuilder().setInfinite(newValue);
+				}	
+			}
+			
+		}));
 
 		useTimerCheckBox.selectedProperty().addListener(((observable, oldValue, newValue) -> {
 
@@ -608,7 +647,8 @@ public class FXComradesGUI extends Application {
 		playerSetupGrid.add(useTimerDelay, 0, 5);
 		playerSetupGrid.add(useDelayAsBuffer, 0, 6);
 		playerSetupGrid.add(timerIncrementLabel, 0, 7);
-		playerSetupGrid.add(startGameButton, 0, 8);
+		playerSetupGrid.add(startGameButton, 0, 9);
+		playerSetupGrid.add(useInfiniteTimer, 0, 8);
 
 		gameInfoGrid.add(currentTurnLabel, 0, 0);
 		gameInfoGrid.add(currentPlayerLabel, 0, 1);
