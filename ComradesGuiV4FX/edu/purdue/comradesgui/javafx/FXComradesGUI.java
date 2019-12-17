@@ -49,7 +49,7 @@ public class FXComradesGUI extends Application {
 	private Label whiteTimerLabel;
 
 	private Stage optionsStage;
-
+	
 	public FXComradesGUI() {
 		comradesMain = new ComradesMain();
 	}
@@ -145,6 +145,10 @@ public class FXComradesGUI extends Application {
 						}
 						else
 							success = false;
+					}
+					else {
+						
+						
 					}
 				}
 			}

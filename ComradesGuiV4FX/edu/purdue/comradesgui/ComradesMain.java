@@ -12,6 +12,11 @@ public class ComradesMain {
 
 		playerList = FXCollections.observableArrayList();
 		currentGame = new ChessGame();
+		
+		ChessHumanPlayer theHuman = new ChessHumanPlayer();
+		theHuman.setPlayerName("Human");
+		
+		playerList.add(theHuman);
 	}
 
 	public ObservableList<ChessPlayer> getPlayerList() {

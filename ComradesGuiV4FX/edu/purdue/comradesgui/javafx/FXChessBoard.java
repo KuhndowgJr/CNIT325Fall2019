@@ -24,6 +24,7 @@ public class FXChessBoard extends Canvas {
 	private boolean fillPieces, framePieces;
 
 	private double boardSize;
+	
 
 	public FXChessBoard(double containerSize, ChessGame chessGame) {
 		super(containerSize, containerSize);
@@ -51,6 +52,23 @@ public class FXChessBoard extends Canvas {
 				drawChessBoard();
 			}
 		};
+		
+		//makes you know the coordinates of the chess board
+		this.setOnMouseClicked((arg1) -> {
+			
+			System.out.println("X: " + arg1.getX());
+			System.out.println("Y: " + arg1.getY());
+			
+			int col = (int) ((arg1.getX() - this.getBoardPosX()) / this.getCheckerSize());
+			int row = (7 - (int) ( (arg1.getY()) / this.getCheckerSize())) ;
+			
+			System.out.println("X div: " + col);
+			System.out.println("Y div: " + row);
+			
+	
+			System.out.println("----------");
+			
+		});
 	}
 
 	private void drawChessBoard() {
