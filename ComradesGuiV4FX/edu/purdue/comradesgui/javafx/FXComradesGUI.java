@@ -230,7 +230,7 @@ public class FXComradesGUI extends Application {
 		useTimerDelay = new CheckBox("Enable Delay");
 		useDelayAsBuffer = new CheckBox("Use as Buffer?");
 		startGameButton = new Button("Start Game!");
-		stopTurnButton = new Button("Stop Turn");
+		stopTurnButton = new Button("Force Turn");
 		timerDurationTextField = new TextField();
 		timerDelayTextField = new TextField();
 		blackTimerLabel = new Label("Black Clock:");
