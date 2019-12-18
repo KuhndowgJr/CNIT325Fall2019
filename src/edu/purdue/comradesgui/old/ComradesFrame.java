@@ -43,6 +43,7 @@ public class ComradesFrame implements MouseListener, ActionListener, FocusListen
 	boolean CHANGING_INSTANCES;
 	JButton LOAD_BUTTON, DEFAULTS_BUTTON;
 	private JButton infiniteAnalysis_Button;
+	private JButton forceTurn_Button;
 	Box INSTANCE_BOX;
 	Color WHITE_PIECES, BLACK_PIECES, LIGHT_SQUARES, DARK_SQUARES;
 	Color BACK_GROUND;
@@ -723,6 +724,14 @@ public class ComradesFrame implements MouseListener, ActionListener, FocusListen
 				if (INSTANCES_ON_COPY[i])
 					INSTANCES[i].SendGoInfinite();
 			}
+			
+		}
+			
+		else if (actionString.equals("force")) {{
+				
+				MoveTimer.isTimerExpired = true;
+			}
+		
 		}
 		else if (actionString.equals("Emit")) {
 			if ((act_evt.getModifiers() & ActionEvent.SHIFT_MASK) != 0)
@@ -955,6 +964,13 @@ public class ComradesFrame implements MouseListener, ActionListener, FocusListen
 		TOOL_BAR.add(infiniteAnalysis_Button);
 		//infiniteAnalysis_Button.setFloatable(false);
 		// TOOL_BAR.addSeparator ();
+		
+		forceTurn_Button = new JButton("Force Turn");
+		forceTurn_Button.setFont(NEWBUY_FONT);
+		forceTurn_Button.setActionCommand("force");
+		forceTurn_Button.addActionListener(this);
+		TOOL_BAR.add(forceTurn_Button);
+		
 		return TOOL_BAR;
 	}
 
