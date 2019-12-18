@@ -727,10 +727,15 @@ public class ComradesFrame implements MouseListener, ActionListener, FocusListen
 			
 		}
 			
-		else if (actionString.equals("force")) {{
-				
-				MoveTimer.isTimerExpired = true;
+		else if (actionString.equals("force")) {
+			
+			System.out.println("i am pressed");
+			
+			for (int i = 0; i < instances; i++) {
+				//if (INSTANCES_ON_COPY[i])
+					INSTANCES[i].forceTurn();
 			}
+			
 		
 		}
 		else if (actionString.equals("Emit")) {

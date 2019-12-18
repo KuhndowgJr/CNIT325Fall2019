@@ -215,15 +215,28 @@ public class CommunicatorInstance extends CommIO implements MouseListener, Chang
 			POP_UP = null;
 		}
 	}
+	
+	public void forceTurn() {
+		
+		SendTo("stop", false);
+		SendTo("isready", true);
+
+		on = false;
+		instancePanel.repaint();
+		HALTING = false;
+	}
 
 	public void DoHalt() {
 		SendTo("stop", false);
 		SendTo("isready", true);
-		if (!WaitForThroughPut("readyok", 10000, false)) // 10s
-		{
-			DisMissInstance();
-			return;
-		}
+		
+		  if (!WaitForThroughPut("readyok", 10000, false)) // 10s 
+		{ 
+			  DisMissInstance();
+		  
+			  return; 
+		  }
+		 
 		on = false;
 		instancePanel.repaint();
 		HALTING = false;
