@@ -1250,7 +1250,7 @@ public class ComradesFrame implements MouseListener, ActionListener, FocusListen
 		if (isGameOver) {
 			endGame(winner, result);
 		}
-
+//add if statement and a method that checks for PIECES LEFT. static array with pieces left 
 		return isGameOver;
 	}
 
