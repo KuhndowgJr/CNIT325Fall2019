@@ -1246,6 +1246,20 @@ public class ComradesFrame implements MouseListener, ActionListener, FocusListen
 			winner += "Draw<BR>50 Move Rule</HTML>";
 			result = "1/2-1/2";
 		}
+		
+		// Is there sufficient material (game pieces) to continue play
+	    
+	    boolean no_material = false;
+	    
+	    if (!isGameOver) {
+	if (no_material) {
+	isGameOver = true;
+	winner += "Draw<BR>Insufficient Material to continue</HTML>";
+	result = "1/2-1/2";
+	}
+	}
+	    // end sufficient material logic
+
 
 		if (isGameOver) {
 			endGame(winner, result);
